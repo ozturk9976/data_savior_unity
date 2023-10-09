@@ -36,6 +36,6 @@ public class SaveDataTest : MonoBehaviour
 
     public void LoadData()
     {
-        //DataSavior.LoadData("Class1");
+
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
@@ -12,16 +13,16 @@ public class DataSavior : MonoBehaviour
         string data = Encrypt(saveData);
         PlayerPrefs.SetString(save_Key, data);
     }
-    /*
-        public static string LoadData<T>(T myLoadObj, string myLoadObj_Key)
-        {
-            var prefsData = PlayerPrefs.GetString(myLoadObj_Key);
-            // var loadData = JsonUtility.FromJson<myLoadObj>(prefsData);
-            var refinedData = Encrypt(loadData);
-            //Debug.Log(refinedData.ToString());
-            return refinedData;
-        }
-    */
+
+    public static string LoadData(Type type, string myLoadObj_Key)
+    {
+        var prefsData = PlayerPrefs.GetString(myLoadObj_Key);
+        var loadData = JsonUtility.FromJson<string>(prefsData);
+        var refinedData = Encrypt(loadData);
+        Debug.Log(refinedData.ToString());
+        return refinedData;
+    }
+
     public static bool DeleteData(string myDeleteObj_Key)
     {
         PlayerPrefs.DeleteKey(myDeleteObj_Key);
